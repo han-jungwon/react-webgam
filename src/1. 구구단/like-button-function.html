@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body>
+<div id="root"></div>
+<script crossOrigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossOrigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<script type="text/babel">
+    'use strict';
+
+    function LikeButton() { // 함수형 컴포넌트 X 함수 컴포넌트 O
+        // this 쓸 일이 없다.
+        const [liked, setLiked] = React.useState(false); // 구조분해 문법
+        // 뭔짓을 하든, 결국 return한게 화면이다.
+        if (liked) {
+            return 'You likde this.';
+        }
+        return (
+            <button onClick={() => { setLiked(true);}}>Like</button>
+        );
+    }
+
+
+</script>
+<script type="text/babel">
+    // ReactDOM.render(<LikeButton />, document.querySelector('#root')); // 리액트 17버전 코드
+    ReactDOM.createRoot(document.querySelector('#root')).render(<LikeButton />); // 리액트 18버전 코드
+</script>
+</body>
+</html>
