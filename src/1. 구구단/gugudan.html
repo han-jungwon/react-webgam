@@ -30,6 +30,7 @@
                             value: '',
                           };
                         });
+                        this.input.focus();
                    // 예전 state값으로 새로운 state를 만들어줄때 return해주는 함수를 이용
               /*     this.setState((prevState) => {
                         return {
@@ -42,6 +43,7 @@
                             result: '땡',
                             value: '',
                         });
+                        this.input.focus();
                     }
                 };
 
@@ -50,12 +52,18 @@
                 onChange = (e) => {
                     this.setState({ value: e.target.value});
                 }
+
+                input;
+
+                onRefInput = (c) => { this.input = c; };
+
+                // 컨텐츠
                 render() {
                     return (
                         <React.Fragment>
                             <div>{this.state.first} 곱하기 {this.state.second}는?</div>
                             <form onSubmit={this.onSubmit}>
-                                <input type="number" value={this.state.value} onChange={this.onChange}/>
+                                <input ref={this.onRefInput} type="number" value={this.state.value} onChange={this.onChange}/>
                                 <button>입력!</button>
                             </form>
                             <div>{this.state.result}</div>
