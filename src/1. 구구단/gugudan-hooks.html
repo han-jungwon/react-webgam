@@ -14,7 +14,7 @@
                 const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9));
                 const [value, setValue] = React.useState('');
                 const [result, setResult] = React.useState('');
-                const inputRef = React.useReducer(null);
+                const inputRef = React.useRef(null);
 
                 const onChageInput = (e) => {
                     setValue(e.target.value);
@@ -22,7 +22,7 @@
 
                 const onSubmitForm = (e) => {
                     e.preventDefault();
-                    if (parseInt(this.state.value) === this.state.first * this.state.second) {
+                    if (parseInt(value) === first * second) {
                         setResult('정답' + value);
                         setFirst(Math.ceil(Math.random() * 9));
                         setSecond(Math.ceil(Math.random() * 9));
